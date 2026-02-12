@@ -1,0 +1,482 @@
+﻿@model List<ResultProductDto>
+@*
+    Default Products
+*@
+
+<div class="menu-style-five-area default-padding bg-cover" style="background-image: url(/source/assets/img/shape/3.jpg);">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-5 col-lg-6">
+                <div class="thumb-style-two">
+                    <div class="fun-fact-style-two mb-40">
+                        <div class="icon">
+                            <img src="/source/assets/img/icon/2.png" alt="Image Not Found">
+                        </div>
+                        <div class="fun-fact">
+                            <div class="counter">
+                                <div class="timer" data-to="500" data-speed="2000">500</div>
+                                <div class="operator">+</div>
+                            </div>
+                            <span class="medium">Menü ve Yemekler</span>
+                        </div>
+                    </div>
+                    <img class="wow fadeInLeft" src="/source/assets/img/thumb/6.jpg" alt="Image Not Found">
+                </div>
+            </div>
+            <div class="col-xl-6 offset-xl-1 col-lg-6">
+                <h4 class="sub-heading">Food Items</h4>
+                <h2 class="title split-text">Başlangıçlar ve Ana Yemekler</h2>
+                <div class="food-menu-style-five-items mt-65 wow fadeInUp">
+                     @foreach (var item in Model)
+                        {
+                    <ul class="nav nav-tabs food-menu-five-navs" id="myTab" role="tablist">
+                       
+                            
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="tab_1" data-bs-toggle="tab" data-bs-target="#tabs_1" type="button" role="tab" aria-controls="tabs_1" aria-selected="true">
+                                @item.ProductName
+                            </button>
+                        </li>
+                        
+                    </ul>
+                    }
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="tabs_1" role="tabpanel" aria-labelledby="tab_1">
+                            <ul class="meal-type">
+                                <li>Half</li>
+                                <li>Full</li>
+                            </ul>
+                            <ul class="meal-items style-two">
+                                <li>
+                                    <div class="content">
+                                        <div class="top">
+                                            <div class="title">
+                                                <h4><a href="shop-single.html">Chicken Alfredo</a></h4>
+                                            </div>
+                                            <div class="price">
+                                                <span>$20</span>
+                                                <span>$30</span>
+                                            </div>
+                                        </div>
+                                        <div class="bottom">
+                                            <div class="left">
+                                                <p>
+                                                    Ricotta / goat cheese / beetroot
+                                                </p>
+                                            </div>
+                                            <div class="right">
+                                                <p>
+                                                    Extra Free Juice.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="content">
+                                        <div class="top">
+                                            <div class="title">
+                                                <h4><a href="shop-single.html">Fish &amp; Chips</a></h4>
+                                            </div>
+                                            <div class="price">
+                                                <span>$36</span>
+                                                <span>$55</span>
+                                            </div>
+                                        </div>
+                                        <div class="bottom">
+                                            <div class="left">
+                                                <p>
+                                                    Atlantic / chips / salad /tartare
+                                                </p>
+                                            </div>
+                                            <div class="right">
+                                                <p>
+                                                    Extra Free Juice.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="content">
+                                        <div class="top">
+                                            <div class="title">
+                                                <h4><a href="shop-single.html">Ebony Fillet Steak</a></h4>
+                                            </div>
+                                            <div class="price">
+                                                <span>$44</span>
+                                                <span>$88</span>
+                                            </div>
+                                        </div>
+                                        <div class="bottom">
+                                            <div class="left">
+                                                <p>
+                                                    Truffle mash / pepper sauce.
+                                                </p>
+                                            </div>
+                                            <div class="right">
+                                                <p>
+                                                    Extra Free Juice.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="content">
+                                        <div class="top">
+                                            <div class="title">
+                                                <h4><a href="shop-single.html">Chicken Alfredo</a></h4>
+                                            </div>
+                                            <div class="price">
+                                                <span>$20</span>
+                                                <span>$30</span>
+                                            </div>
+                                        </div>
+                                        <div class="bottom">
+                                            <div class="left">
+                                                <p>
+                                                    Ricotta / goat cheese / beetroot
+                                                </p>
+                                            </div>
+                                            <div class="right">
+                                                <p>
+                                                    Extra Free Juice.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane fade" id="tabs_2" role="tabpanel" aria-labelledby="tab_2">
+                            <ul class="meal-type">
+                                <li>Half</li>
+                                <li>Full</li>
+                            </ul>
+                            <ul class="meal-items style-two">
+                                <li>
+                                    <div class="content">
+                                        <div class="top">
+                                            <div class="title">
+                                                <h4><a href="shop-single.html">Cupcakes</a></h4>
+                                            </div>
+                                            <div class="price">
+                                                <span>$10</span>
+                                                <span>$20</span>
+                                            </div>
+                                        </div>
+                                        <div class="bottom">
+                                            <div class="left">
+                                                <p>
+                                                    Ricotta / goat cheese / beetroot
+                                                </p>
+                                            </div>
+                                            <div class="right">
+                                                <p>
+                                                    Extra Free Juice.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="content">
+                                        <div class="top">
+                                            <div class="title">
+                                                <h4><a href="shop-single.html">Brownies</a></h4>
+                                            </div>
+                                            <div class="price">
+                                                <span>$16</span>
+                                                <span>$34</span>
+                                            </div>
+                                        </div>
+                                        <div class="bottom">
+                                            <div class="left">
+                                                <p>
+                                                    Atlantic / chips / salad /tartare
+                                                </p>
+                                            </div>
+                                            <div class="right">
+                                                <p>
+                                                    Extra Free Juice.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="content">
+                                        <div class="top">
+                                            <div class="title">
+                                                <h4><a href="shop-single.html">Muffins</a></h4>
+                                            </div>
+                                            <div class="price">
+                                                <span>$22</span>
+                                                <span>$36</span>
+                                            </div>
+                                        </div>
+                                        <div class="bottom">
+                                            <div class="left">
+                                                <p>
+                                                    Truffle mash / pepper sauce.
+                                                </p>
+                                            </div>
+                                            <div class="right">
+                                                <p>
+                                                    Extra Free Juice.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="content">
+                                        <div class="top">
+                                            <div class="title">
+                                                <h4><a href="shop-single.html">Cheesecakes</a></h4>
+                                            </div>
+                                            <div class="price">
+                                                <span>$34</span>
+                                                <span>$66</span>
+                                            </div>
+                                        </div>
+                                        <div class="bottom">
+                                            <div class="left">
+                                                <p>
+                                                    Ricotta / goat cheese / beetroot
+                                                </p>
+                                            </div>
+                                            <div class="right">
+                                                <p>
+                                                    Extra Free Juice.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane fade" id="tabs_3" role="tabpanel" aria-labelledby="tab_3">
+                            <ul class="meal-type">
+                                <li>Half</li>
+                                <li>Full</li>
+                            </ul>
+                            <ul class="meal-items style-two">
+                                <li>
+                                    <div class="content">
+                                        <div class="top">
+                                            <div class="title">
+                                                <h4><a href="shop-single.html">Salmon Fry</a></h4>
+                                            </div>
+                                            <div class="price">
+                                                <span>$40</span>
+                                                <span>$70</span>
+                                            </div>
+                                        </div>
+                                        <div class="bottom">
+                                            <div class="left">
+                                                <p>
+                                                    Ricotta / goat cheese / beetroot
+                                                </p>
+                                            </div>
+                                            <div class="right">
+                                                <p>
+                                                    Extra Free Juice.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="content">
+                                        <div class="top">
+                                            <div class="title">
+                                                <h4><a href="shop-single.html">Pangasius or Basa</a></h4>
+                                            </div>
+                                            <div class="price">
+                                                <span>$15</span>
+                                                <span>$55</span>
+                                            </div>
+                                        </div>
+                                        <div class="bottom">
+                                            <div class="left">
+                                                <p>
+                                                    Atlantic / chips / salad /tartare
+                                                </p>
+                                            </div>
+                                            <div class="right">
+                                                <p>
+                                                    Extra Free Juice.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="content">
+                                        <div class="top">
+                                            <div class="title">
+                                                <h4><a href="shop-single.html">Clams</a></h4>
+                                            </div>
+                                            <div class="price">
+                                                <span>$45</span>
+                                                <span>$78</span>
+                                            </div>
+                                        </div>
+                                        <div class="bottom">
+                                            <div class="left">
+                                                <p>
+                                                    Truffle mash / pepper sauce.
+                                                </p>
+                                            </div>
+                                            <div class="right">
+                                                <p>
+                                                    Extra Free Juice.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="content">
+                                        <div class="top">
+                                            <div class="title">
+                                                <h4><a href="shop-single.html">Red Crab</a></h4>
+                                            </div>
+                                            <div class="price">
+                                                <span>$20</span>
+                                                <span>$30</span>
+                                            </div>
+                                        </div>
+                                        <div class="bottom">
+                                            <div class="left">
+                                                <p>
+                                                    Ricotta / goat cheese / beetroot
+                                                </p>
+                                            </div>
+                                            <div class="right">
+                                                <p>
+                                                    Extra Free Juice.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane fade" id="tabs_4" role="tabpanel" aria-labelledby="tab_4">
+                            <ul class="meal-type">
+                                <li>Half</li>
+                                <li>Full</li>
+                            </ul>
+                            <ul class="meal-items style-two">
+                                <li>
+                                    <div class="content">
+                                        <div class="top">
+                                            <div class="title">
+                                                <h4><a href="shop-single.html">Wine</a></h4>
+                                            </div>
+                                            <div class="price">
+                                                <span>$34</span>
+                                                <span>$66</span>
+                                            </div>
+                                        </div>
+                                        <div class="bottom">
+                                            <div class="left">
+                                                <p>
+                                                    Ricotta / goat cheese / beetroot
+                                                </p>
+                                            </div>
+                                            <div class="right">
+                                                <p>
+                                                    Extra Free Juice.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="content">
+                                        <div class="top">
+                                            <div class="title">
+                                                <h4><a href="shop-single.html">Coffee</a></h4>
+                                            </div>
+                                            <div class="price">
+                                                <span>$45</span>
+                                                <span>$80</span>
+                                            </div>
+                                        </div>
+                                        <div class="bottom">
+                                            <div class="left">
+                                                <p>
+                                                    Atlantic / chips / salad /tartare
+                                                </p>
+                                            </div>
+                                            <div class="right">
+                                                <p>
+                                                    Extra Free Juice.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="content">
+                                        <div class="top">
+                                            <div class="title">
+                                                <h4><a href="shop-single.html">Hot chocolate</a></h4>
+                                            </div>
+                                            <div class="price">
+                                                <span>$22</span>
+                                                <span>$45</span>
+                                            </div>
+                                        </div>
+                                        <div class="bottom">
+                                            <div class="left">
+                                                <p>
+                                                    Truffle mash / pepper sauce.
+                                                </p>
+                                            </div>
+                                            <div class="right">
+                                                <p>
+                                                    Extra Free Juice.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="content">
+                                        <div class="top">
+                                            <div class="title">
+                                                <h4><a href="shop-single.html">CMilk Shake</a></h4>
+                                            </div>
+                                            <div class="price">
+                                                <span>$20</span>
+                                                <span>$30</span>
+                                            </div>
+                                        </div>
+                                        <div class="bottom">
+                                            <div class="left">
+                                                <p>
+                                                    Ricotta / goat cheese / beetroot
+                                                </p>
+                                            </div>
+                                            <div class="right">
+                                                <p>
+                                                    Extra Free Juice.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
