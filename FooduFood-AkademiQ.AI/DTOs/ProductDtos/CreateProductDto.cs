@@ -13,6 +13,6 @@
         public bool IsPopular { get; set; }
         public List<string> Ingredients { get; set; }
 
-        public string CategoryId { get; set; }
+        public string CategoryName { get; set; }
     }
 }

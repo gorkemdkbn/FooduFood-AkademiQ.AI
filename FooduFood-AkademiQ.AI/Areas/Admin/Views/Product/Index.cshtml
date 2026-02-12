@@ -1,0 +1,183 @@
+﻿@model List<ResultProductDto>
+@{
+    ViewData["Title"] = "Ürün Yönetimi";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+
+<style>
+    .product-card {
+        border: none;
+        border-radius: 15px;
+        overflow: hidden;
+    }
+
+    .table thead {
+        background-color: #f8f9fa;
+        border-bottom: 2px solid #e9ecef;
+    }
+
+    .table th {
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        color: #495057;
+    }
+
+    .img-thumbnail-custom {
+        object-fit: cover;
+        border-radius: 12px;
+        transition: transform 0.2s;
+        cursor: pointer;
+    }
+
+        .img-thumbnail-custom:hover {
+            transform: scale(1.1);
+        }
+
+    .badge-soft-success {
+        background-color: #d1e7dd;
+        color: #0f5132;
+    }
+
+    .badge-soft-danger {
+        background-color: #f8d7da;
+        color: #842029;
+    }
+
+    .badge-soft-warning {
+        background-color: #fff3cd;
+        color: #664d03;
+    }
+
+    .btn-action {
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        line-height: 32px;
+        border-radius: 8px;
+        margin-right: 4px;
+    }
+</style>
+
+<div class="container-fluid py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold mb-0">Ürün Listesi</h2>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="#">Admin</a></li>
+                    <li class="breadcrumb-item active">Ürünler</li>
+                </ol>
+            </nav>
+        </div>
+        <a asp-action="CreateProduct" class="btn btn-primary px-4 shadow-sm" style="border-radius: 10px;">
+            <i class="fas fa-plus me-2"></i> Yeni Ürün Ekle
+        </a>
+    </div>
+
+    <div class="card shadow-sm product-card">
+        <div class="card-body p-4">
+            <div class="table-responsive">
+                <table id="productTable" class="table table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Görsel</th>
+                            <th>Ürün Bilgisi</th>
+                            <th>Kategori</th>
+                            <th>Yarım Fiyat</th>
+                            <th>Tam Fiyat</th>
+                            <th class="text-center">Durum</th>
+                            <th class="text-center">Popüler</th>
+                            <th class="text-center">Yorum</th>
+                            <th class="text-end">İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="text-center">
+                                    <img src="@item.ImageUrl" class="img-thumbnail-custom shadow-sm" width="55" height="55" />
+                                </td>
+
+                                <td>
+                                    <div class="fw-bold text-dark">@item.ProductName</div>
+                                    <div class="text-muted small">@item.Weight | @item.Dimensions</div>
+                                </td>
+
+                                <td>
+                                    <span class="text-secondary">@item.CategoryName</span>
+                                </td>
+
+                                <td class="fw-semibold text-primary">@item.PriceHalf.ToString("C2")</td>
+                                <td class="fw-semibold text-primary">@item.PriceFull.ToString("C2")</td>
+
+                                <td class="text-center">
+                                    @if (item.IsAvailable)
+                                    {
+                                        <span class="badge badge-soft-success px-3 py-2"><i class="fas fa-check-circle me-1"></i> Stokta</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge badge-soft-danger px-3 py-2"><i class="fas fa-times-circle me-1"></i> Tükendi</span>
+                                    }
+                                </td>
+
+                                <td class="text-center">
+                                    @if (item.IsPopular)
+                                    {
+                                        <span class="badge badge-soft-warning px-3 py-2 text-warning"><i class="fas fa-star"></i></span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">-</span>
+                                    }
+                                </td>
+
+                                <td class="text-center">
+                                    <span class="badge rounded-pill bg-light text-dark border">
+                                        <i class="far fa-comment-alt me-1 text-primary"></i> @(item.Reviews?.Count ?? 0)
+                                    </span>
+                                </td>
+
+                                <td class="text-end">
+                                    <a asp-action="UpdateProduct" asp-route-id="@item.Id" class="btn btn-outline-primary btn-action" title="Düzenle">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-info btn-action" title="Detay">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a asp-action="DeleteProduct" asp-route-id="@item.Id" class="btn btn-outline-danger btn-action" title="Sil" onclick="return confirm('Silmek istediğinize emin misiniz?')">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#productTable').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.13.6/i18n/tr.json"
+            },
+            "pageLength": 10,
+            "order": [[1, "asc"]],
+            "columnDefs": [
+                { "orderable": false, "targets": [0, 8] } // Görsel ve İşlemler sütununda sıralamayı kapat
+            ]
+        });
+    });
+</script>

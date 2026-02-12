@@ -1,32 +1,56 @@
 ﻿using FooduFood_AkademiQ.AI.DTOs.ProductDtos;
+using FooduFood_AkademiQ.AI.Entities;
+using FooduFood_AkademiQ.AI.Settings;
+using Mapster;
+using MongoDB.Driver;
+using MongoDB.Driver.Linq;
 
 namespace FooduFood_AkademiQ.AI.Services.ProductsServices
 {
     public class ProductService : IProductService
     {
-        public Task CreateAsycn(CreateProductDto productDto)
+
+        private readonly IMongoCollection<Product> _productCollection;
+
+        public ProductService(IDatabaseSettings databaseSettings)
         {
-            throw new NotImplementedException();
+            var client = new MongoClient(databaseSettings.ConnectionString);
+            var database = client.GetDatabase(databaseSettings.DatabaseName);
+            _productCollection = database.GetCollection<Product>
+             (databaseSettings.ProductCollectionName);
         }
 
-        public Task DeleteAsycn(string id)
+        public async Task CreateAsycn(CreateProductDto productDto)
         {
-            throw new NotImplementedException();
+            var product = productDto.Adapt<Product>();
+            await _productCollection.InsertOneAsync(product);
         }
 
-        public Task<List<ResultProductDto>> GetAllAsycn()
+        public async Task DeleteAsycn(string id)
         {
-            throw new NotImplementedException();
+            await _productCollection.DeleteOneAsync(x => x.Id == id);
+
         }
 
-        public Task<UpdateProductDto> GetByIdAsycn(string id)
+        public async Task<List<ResultProductDto>> GetAllAsycn()
         {
-            throw new NotImplementedException();
+            var products = await _productCollection.AsQueryable().ToListAsync();
+                
+
+            return products.Adapt<List<ResultProductDto>>();
         }
 
-        public Task UpdateAsycn(UpdateProductDto productDto)
+        public async Task<UpdateProductDto> GetByIdAsycn(string id)
         {
-            throw new NotImplementedException();
+            var product = await _productCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
+            return product.Adapt<UpdateProductDto>();
+        }
+
+        public async Task UpdateAsycn(UpdateProductDto productDto)
+        {
+            var product = productDto.Adapt<Product>();
+            await _productCollection.FindOneAndReplaceAsync(x => x.Id == product.Id, product);
+           
         }
     }
 }
