@@ -1,13 +1,81 @@
 ﻿@model CreateCategoryDto
 @{
-    ViewData["Title"] = "CreateCategory";
+    ViewData["Title"] = "Yeni Kategori Oluştur";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<h1>Yeni Kategori Oluştur</h1>
 
-<form method="post">
-    <label>Kategori Adı</label>
-    <input type="text" asp-for="name" class="form-control" required />
-    <br>
-    <button class="btn btn-dark">Kaydet</button>
-</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="mb-4">
+                <a href="/Category/Index" class="text-decoration-none text-muted small">
+                    <i class="fas fa-chevron-left me-1"></i> Kategori Listesine Dön
+                </a>
+            </div>
+
+            <div class="card border-0 shadow-sm" style="border-radius: 20px;">
+                <div class="card-body p-5">
+                    <div class="text-center mb-4">
+                        <div class="display-6 text-primary mb-2">
+                            <i class="fas fa-folder-plus"></i>
+                        </div>
+                        <h3 class="fw-bold text-dark">Yeni Kategori</h3>
+                        <p class="text-muted">Ürünlerinizi sınıflandırmak için yeni bir isim belirleyin.</p>
+                    </div>
+
+                    <form method="post">
+                        <div class="mb-4">
+                            <label class="form-label fw-semibold text-secondary">Kategori Adı</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0" style="border-radius: 12px 0 0 12px;">
+                                    <i class="fas fa-tag text-primary"></i>
+                                </span>
+                                <input type="text" asp-for="name"
+                                       class="form-control bg-light border-start-0"
+                                       placeholder="Örn: Tatlılar, İçecekler..."
+                                       style="border-radius: 0 12px 12px 0; padding: 12px;"
+                                       required />
+                            </div>
+                            <span class="text-danger small" asp-validation-for="name"></span>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg shadow-sm" style="border-radius: 12px; padding: 12px;">
+                                <i class="fas fa-save me-2"></i> Kategoriyi Kaydet
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="mt-4 text-center">
+                <p class="text-muted small">
+                    <i class="fas fa-info-circle me-1"></i>
+                    Eklediğiniz kategori anında ürün ekleme sayfasında listelenecektir.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        background-color: #f4f7f6;
+    }
+
+    .card {
+        transition: transform 0.3s ease;
+    }
+
+    .form-control:focus {
+        background-color: #fff !important;
+        border-color: #0d6efd;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.1);
+    }
+
+    .input-group-text {
+        border: 1px solid #dee2e6;
+    }
+</style>

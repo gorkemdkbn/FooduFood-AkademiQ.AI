@@ -1,17 +1,85 @@
 ﻿@model UpdateCategoryDto
 @{
-    ViewData["Title"] = "UpdateCategory";
+    ViewData["Title"] = "Kategori Güncelle";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>Kategori Güncelle</h1>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
 
-<!DOCTYPE html>
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="mb-4">
+                <a href="/Category/Index" class="text-decoration-none text-muted small">
+                    <i class="fas fa-chevron-left me-1"></i> Listeye Geri Dön
+                </a>
+            </div>
 
-<form method="post">
-    <input type="hidden" asp-for="Id"/>
-    <label>Kategori Adı</label>
-    <input type="text" asp-for="Name" class="form-control" required />
-    <br>
-    <button class="btn btn-dark">Kaydet</button>
-</form>
+            <div class="card border-0 shadow-sm" style="border-radius: 20px;">
+                <div class="card-body p-5">
+                    <div class="text-center mb-4">
+                        <div class="display-6 text-primary mb-2">
+                            <i class="fas fa-edit"></i>
+                        </div>
+                        <h3 class="fw-bold text-dark">Kategoriyi Düzenle</h3>
+                        <p class="text-muted">Kategori adını aşağıdan güncelleyebilirsiniz.</p>
+                    </div>
+
+                    <form method="post">
+                        <input type="hidden" asp-for="Id" />
+
+                        <div class="mb-4">
+                            <label class="form-label fw-semibold text-secondary">Kategori Adı</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0" style="border-radius: 12px 0 0 12px;">
+                                    <i class="fas fa-pen-nib text-primary"></i>
+                                </span>
+                                <input type="text" asp-for="Name"
+                                       class="form-control bg-light border-start-0"
+                                       style="border-radius: 0 12px 12px 0; padding: 12px;"
+                                       required />
+                            </div>
+                            <span class="text-danger small" asp-validation-for="Name"></span>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg shadow-sm" style="border-radius: 12px; padding: 12px;">
+                                <i class="fas fa-sync-alt me-2"></i> Değişiklikleri Kaydet
+                            </button>
+                            <a href="/Category/Index" class="btn btn-link btn-sm text-decoration-none text-muted mt-2">Vazgeç</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        background-color: #f4f7f6;
+    }
+
+    .card {
+        border: none;
+        transition: all 0.3s ease;
+    }
+
+    /* Focus (Odaklanma) durumunda mavi renkler */
+    .form-control:focus {
+        background-color: #fff !important;
+        border-color: #0d6efd;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.1);
+    }
+
+    .input-group-text {
+        border: 1px solid #dee2e6;
+    }
+
+    /* Buton Hover (Üzerine Gelme) Efekti */
+    .btn-primary:hover {
+        background-color: #0b5ed7;
+        border-color: #0a58ca;
+        transform: translateY(-1px);
+    }
+</style>
